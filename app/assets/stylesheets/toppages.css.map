@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,YAAa;EACb,MAAM,EAAE,KAAK;EAEb,gBAAgB,EAAE,gBAAgB;EAElC,iBAAiB,EAAE,SAAS;EAE5B,mBAAmB,EAAE,MAAM;EAE3B,eAAe,EAAE,KAAK;EAEtB,OAAO,EAAE,GAAG",
+"sources": ["toppages.scss"],
+"names": [],
+"file": "toppages.css"
+}

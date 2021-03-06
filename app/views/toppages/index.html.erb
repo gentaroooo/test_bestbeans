@@ -1,5 +1,6 @@
 <% if logged_in? %>
   <div class="row">
+
     <aside class="col-sm-4">
       <%= form_with(model: @post, local: true) do |f| %>
         <div class="form-group">
@@ -13,11 +14,11 @@
     </div>
   </div>
 <% else %>
-  <div class="center jumbotron">
+  <div class="top-main">
     <div class="text-center">
-      <h1>美味しいコーヒ豆を紹介しよう！</h1>
+      <h1>美味しいコーヒ豆を紹介しよう</h1>
       <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
-      <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %>
+      <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %> 
     </div>
   </div>
 <% end %>
