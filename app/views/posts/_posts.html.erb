@@ -11,8 +11,11 @@
         </div>
         <div>
           <% if current_user == post.user %>
-            <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to "削除", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
           <% end %>
+          
+          <!-- いいね登録ボタン -->
+       　  <%= render 'favorites/favorite_button', post: post %>
         </div>
       </div>
     </li>
