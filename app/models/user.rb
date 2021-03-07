@@ -47,4 +47,7 @@ class User < ApplicationRecord
   def feed_posts
     Post.where(user_id: self.following_ids + [self.id])
   end
+  
+  # 画像投稿
+  # mount_uploader :image, ImageUploader
 end
