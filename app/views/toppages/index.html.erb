@@ -1,18 +1,18 @@
 <% if logged_in? %>
   <div class="row">
-
-    <aside class="col-sm-4">
-      <%= form_with(model: @post, local: true) do |f| %>
-        <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
-        </div>
-        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
-      <% end %>
-    </aside>
+  <!--  <aside class="col-sm-4">-->
+  <!--    <%#= form_with(model: @post, local: true) do |f| %>-->
+  <!--      <div class="form-group">-->
+  <!--        <%#= f.text_area :content, class: 'form-control', rows: 5 %>-->
+  <!--      </div>-->
+        <%#= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+      <%# end %>
+    <!--</aside>-->
     <div class="col-sm-8">
       <%= render 'posts/posts', posts: @posts %>
     </div>
   </div>
+  <%# end %>
 <% else %>
   <div class="top-main">
     <div class="text-center">
@@ -21,4 +21,5 @@
       <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %> 
     </div>
   </div>
+  
 <% end %>
