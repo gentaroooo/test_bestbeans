@@ -9,13 +9,20 @@
         <div>
           <p class="mb-0"><%= post.content %></p>
         </div>
-        <div>
-          <% if current_user == post.user %>
-            <%= link_to "削除", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
+      <div>
+  
           
           <!-- いいね登録ボタン -->
        　  <%= render 'favorites/favorite_button', post: post %>
+       　<!-- 編集ボタン -->
+       　  <% if current_user == post.user %>
+            <%= link_to "編集", edit_post_path(post), class: 'btn btn-dark btn-sm' %>
+          <% end %>
+          <!--削除ボタン-->
+          <% if current_user == post.user %>
+            <%= link_to "削除", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+       　  
         </div>
       </div>
     </li>

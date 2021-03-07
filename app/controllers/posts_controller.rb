@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:destroy, :edit, :show, :update]
   
   def new
     @post = Post.new
@@ -25,6 +25,25 @@ class PostsController < ApplicationController
     flash[:success] = 'メッセージを削除しました。'
     redirect_back(fallback_location: root_path)
   end
+  
+  def edit
+    @post = Post.find(params[:id])
+  end
+  
+  def update
+
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      flash[:success] = 'メッセージを編集しました。'
+      redirect_to root_url
+      
+    else
+      @posts = current_user.feed_posts.order(id: :desc).page(params[:page])
+      flash.now[:danger] = 'メッセージの編集に失敗しました。'
+      render 'toppages/index'
+      
+    end
+  end
 
   private
 
@@ -38,4 +57,6 @@ class PostsController < ApplicationController
       redirect_to root_url
     end
   end
+  
+
 end
