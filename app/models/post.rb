@@ -5,4 +5,6 @@ class Post < ApplicationRecord
   
   has_many :favorites
   has_many :users, through: :favorites, source: :user
+  
+  mount_uploader :image, ImageUploader
 end

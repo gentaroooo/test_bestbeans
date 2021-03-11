@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  
+    # 画像投稿
+  mount_uploader :image, ImageUploader
+  
   before_save { self.email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
@@ -47,7 +51,5 @@ class User < ApplicationRecord
   def feed_posts
     Post.where(user_id: self.following_ids + [self.id])
   end
-  
-  # 画像投稿
-  # mount_uploader :image, ImageUploader
+
 end

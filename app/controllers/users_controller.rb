@@ -50,9 +50,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.new(user_params)
     if current_user.update(user_params)
+       flash[:success] = 'ユーザ情報を変更しました。'
       redirect_to root_path
     else
+       flash[:success] = 'ユーザ情報の更新に失敗しました。'
       render :edit
     end
   end
@@ -61,6 +64,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
   end
 end
