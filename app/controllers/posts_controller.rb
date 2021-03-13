@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     else
       @posts = current_user.feed_posts.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'メッセージの編集に失敗しました。'
-      render 'toppages/index'
+      render :edit
       
     end
   end
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :image)
   end
 
   def correct_user

@@ -1,8 +1,18 @@
-<h1>メッセージ編集ページ</h1>
-
-<%= form_with(model: @post, local: true) do |f| %>
-  <%= f.label :content, '投稿内容' %>
-  <%= f.text_field :content, class: 'form-control' %>
-     
-  <%= f.submit '更新する' %>
-<% end %>
+<div class="text-center">
+      <h1>メッセージ編集</h1>
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+    　<%= form_with(model: @post, local: true) do |f| %>
+    　 <%= render 'layouts/error_messages', model: f.object %>
+    
+    <div class="form-group">
+      <%= f.label :content, '投稿内容' %>
+      <%= f.text_field :content, class: 'form-control' %>
+    </div>     
+          <%= f.file_field :image %>
+          <%= f.submit '変更する', class: 'btn btn-primary btn-block' %>
+    <% end %>
+ </div>  
+</div>  

@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+ 
+ // トップ画像
+ .top-main {
+//   padding: 200px 0 100px;
+  padding: 100px 200px;
+  text-align: center;
+//   position: absolute;
+  top: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  color: white;
+  background-color: #3ecdc6;
+  background-repeat: no-repeat;
+  background-position: center 50%;
+  background-size: cover;
+  font-family: "arial black";
+  border-radius: 50px;
+  /* 背景画像のCSS */
+  background-image: url("coffee1.jpg");
+}
+
+// ユーザー画像
+ .user-image {
+
+}
+
+// 投稿フォーム
+ .post-form {
+ }

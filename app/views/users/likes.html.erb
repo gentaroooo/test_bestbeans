@@ -1,14 +1,19 @@
-<div class="text-center">
-  <p>プロフィール
-  <%= render 'relationships/follow_button', user: @user %>
-  <!--画像を表示-->
-  <% if @user.image? %> 
-  <%= image_tag @user.image.url %>
-  <% end %>
-  </p>
-
 <div class="row">
-    <div class="col-sm-8">
+   <div class="col-sm-8">
+          <div class="text-center">
+            <p>プロフィール
+            <%= render 'relationships/follow_button', user: @user %>
+            </p>
+            <!--ユーザー画像を表示-->
+            <p><% if @user.image? %> 
+              <%= image_tag @user.image.url, size: "100x100", alt: "アイコン" %>
+              <% else %>
+              <%= image_tag "/assets/human.png", :size => '100x100' %>
+              <% end %>
+            </p>
+   </div>
+
+
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link 
       <%= 'active' if current_page?(user_path(@user)) %>">自分の投稿
