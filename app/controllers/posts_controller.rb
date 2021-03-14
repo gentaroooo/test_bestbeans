@@ -31,20 +31,14 @@ class PostsController < ApplicationController
   end
   
   def update
-
-    @post = current_user.posts.build(post_params)
-    if @post.save
-      flash[:success] = 'メッセージを編集しました。'
+    if @post.update(post_params)
+      flash[:success] = 'メッセージは正常に更新されました'
       redirect_to root_url
-      
     else
-      @posts = current_user.feed_posts.order(id: :desc).page(params[:page])
-      flash.now[:danger] = 'メッセージの編集に失敗しました。'
+      flash.now[:danger] = 'メッセージは更新されませんでした'
       render :edit
-      
     end
   end
-
   private
 
   def post_params
