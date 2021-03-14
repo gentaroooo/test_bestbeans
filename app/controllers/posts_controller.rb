@@ -2,6 +2,11 @@ class PostsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy, :edit, :show, :update]
   
+  
+  def index
+    @posts = Post.order(id: :desc).page(params[:page]).per(25)
+  end
+
   def new
     @post = Post.new
   end
@@ -16,7 +21,6 @@ class PostsController < ApplicationController
       @posts = current_user.feed_posts.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
       render 'toppages/index'
-      
     end
   end
 

@@ -1,17 +1,18 @@
 <% if logged_in? %>
-  <div class="row">
-    
-    <div class="col-sm-8 post-form">
-      <%= render 'posts/posts', posts: @posts %>
-    </div>
-  </div>
+  　<div class="row">
+      <div class="col-sm-8 post-form">
+        <ul class="nav nav-pills">
+            <%= link_to 'フォロー投稿',  root_url, class: 'nav-link' %>
+            <%= link_to '投稿一覧',  posts_path, class: 'nav-link' %>
+        </ul>
+        <%= render 'posts/posts', posts: @posts %>
+     
+      </div>
 <% else %>
-  <div class="top-main">
-    <div class="text-center">
-      <h1>美味しいコーヒ豆を紹介しよう</h1>
-      <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
-      <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %> 
+      <div class="top-main text-center">
+          <h1>美味しいコーヒ豆を紹介しよう</h1>
+          <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
+          <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %> 
+      </div>
     </div>
-  </div>
-  
 <% end %>

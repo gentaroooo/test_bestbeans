@@ -6,6 +6,7 @@
     	   <div class="card-img-top">
     	        <!--ユーザー名-->　　　
             　　<p><%= link_to post.user.name, user_path(post.user) %></p>
+            　　
     	         <!--画像の表示-->
     	         <%if post.image? %> 
                    <%= image_tag post.image.url, size: "400x300", alt: "アイコン" %>
@@ -31,7 +32,7 @@
   　     </div>
   　</aside>
   </div>
-  <% end %>
-  <%= paginate posts %>
+ <% end %>
+ <%#= paginate posts %>
   
   
