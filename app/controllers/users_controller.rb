@@ -50,12 +50,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.new(user_params)
+    @user = User.find_by(id: params[:id])
     if current_user.update(user_params)
        flash[:success] = 'ユーザ情報を変更しました。'
       redirect_to root_path
     else
-       flash[:success] = 'ユーザ情報の更新に失敗しました。'
+       flash.now[:danger] = 'ユーザ情報の更新に失敗しました。'
       render :edit
     end
   end

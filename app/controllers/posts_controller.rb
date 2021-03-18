@@ -41,6 +41,7 @@ class PostsController < ApplicationController
     else
       flash.now[:danger] = 'メッセージは更新されませんでした'
       render :edit
+      
     end
   end
   private
