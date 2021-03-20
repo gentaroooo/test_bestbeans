@@ -1,6 +1,6 @@
 <header class="mb-4">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">coffeeposts</a>
+    <a class="navbar-brand" href="/">Best beans</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,7 +8,11 @@
  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <li class="nav-item"><%= link_to '投稿一覧',  posts_path, class: 'nav-link' %></li>
+          
+          <!--最後に消す-->
+          <!--<li class="nav-item"><%#= link_to '投稿一覧',  posts_path, class: 'nav-link' %></li>-->
+          
+          
           <li class="nav-item"><%= link_to '新規投稿',  new_post_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ユーザー', users_path, class: 'nav-link' %></li>
           <li class="nav-item dropdown">

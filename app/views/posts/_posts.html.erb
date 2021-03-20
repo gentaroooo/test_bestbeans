@@ -1,38 +1,42 @@
-
-<% posts.each do |post| %>
-  <div class="row">
-    <aside class="col-sm-4">
-        <div class="card text-center" style="width: 20rem;">
-    	   <div class="card-img-top">
-    	        <!--ユーザー名-->　　　
-            　　<p><%= link_to post.user.name, user_path(post.user) %></p>
-            　　
-    	         <!--画像の表示-->
-    	         <%if post.image? %> 
-                   <%= image_tag post.image.url, size: "400x300", alt: "アイコン" %>
-                 <% else %>
-                   <%= image_tag "/assets/beans.jpg", :size => '400x300' %>
-                 <% end %>
-           </div>
-    	   
-    	   <div class="card-body">
-                 <!--投稿内容の表示-->
-　　　　　　　　 <h5><%= post.content %></h5>
-　　　　　　</div>
-     	    <!--投稿時間  -->
-     	   <div class="card-footer">
-     	       投稿日時<%= post.created_at %>
-               <!-- いいね登録ボタン -->
-     　         <%= render 'favorites/favorite_button', post: post %>
-     　         <!-- 編集ボタン -->
-     　         <% if current_user == post.user %><%= link_to "編集", edit_post_path(post), class: 'btn btn-dark btn-sm' %><% end %>
-               <!--削除ボタン-->
-               <% if current_user == post.user %><%= link_to "削除", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %><% end %>
-           </div>
-  　     </div>
-  　</aside>
-  </div>
- <% end %>
+<div class="row">
+		 <% posts.each do |post| %>
+					    <aside class="col-sm-5">
+							     <div class="card-deck" style="width:25rem">
+							        <div class="card text-center">
+							           <div class="card-img-top">
+																		<!--ユーザー名-->
+																		<p><%= link_to post.user.name, user_path(post.user) %></p>
+																		<!--画像の表示-->
+																		<%if post.image? %> 
+					                <%= image_tag post.image.url, size: "300x200", alt: "アイコン" %>
+					                <% else %>
+					                <%= image_tag "/assets/beans.jpg", :size => '300x200' %>
+							           <% end %>
+							           </div>
+							           <div class="card-body">
+		                   <!--投稿内容の表示-->
+		                   <h5><%= post.content %></h5>
+							           </div>
+		                   <!--投稿時間  -->
+		                   <div class="card-footer">
+		     	              投稿日時<%= post.created_at %>
+							               <!-- いいね登録ボタン -->
+							               <%= render 'favorites/favorite_button', post: post %>
+							               <!-- 編集ボタン -->
+							               <% if current_user == post.user %>
+							               <%= link_to edit_post_path(post), class: 'btn btn btn-secondary 
+							               text-white btn-sm' do %><i class="fas fa-pen"></i><% end %>
+							               <% end %>
+							               <!--削除ボタン-->
+							               <% if current_user == post.user %>
+							               <%= link_to post, method: :delete, data: { confirm: "You sure?" },
+							               class: 'btn btn-danger text-white btn-sm' do %> <i class="far fa-trash-alt"></i><% end %>
+							               <% end %>
+							        </div>
+							     </div>
+					  　</aside>
+		 <% end %>
+</div>
  <%#= paginate posts %>
   
   

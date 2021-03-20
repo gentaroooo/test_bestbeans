@@ -1,8 +1,13 @@
+<div class="container">  
   　<div class="row">
-      <div class="col-sm-8 post-form">
-        <ul class="nav nav-pills">
-            <%= link_to 'フォロー投稿',  root_url, class: 'nav-link' %>
-            <%= link_to '投稿一覧',  posts_path, class: 'nav-link' %>
-        </ul>
+          <div class="col-sm-8">
+            <ul class="nav nav-pills">
+                <%= link_to 'フォロー投稿',  root_url, class: 'nav-link' %>
+                <%= link_to '投稿一覧',  posts_path, class: 'nav-link' %>
+            </ul>
+      　   </div>
+            <%= render 'posts/posts', posts: @posts %>
  
     <%= render 'posts/posts', posts: @posts %> 
+    </div>
+</div>
