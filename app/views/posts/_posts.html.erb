@@ -6,12 +6,11 @@
 							           <div class="card-header">
 							             <!--ユーザー名と画像を表示-->
 									           <li class="media">
-										            
-																							 <% if post.user.image? %>
-																								 <%= link_to (image_tag "#{post.user.image}", class: "user-icon", size: "50x50"), user_path(post.user) %>
-																							 <% else %>
-							                　 <%= link_to (image_tag "/assets/human.png",　class: "user-icon", size: "50x50"), user_path(post.user) %>
-							                 <% end %>
+																					 <% if post.user.image? %>
+																						 <%= link_to (image_tag "#{post.user.image}", class: "user-icon", size: "50x50"), user_path(post.user) %>
+																					 <% else %>
+					                　 <%= link_to (image_tag "/assets/human.png", class: "user-icon", size: "50x50"), user_path(post.user) %>
+					                 <% end %>
 						                
 																						<h6><%= post.user.name %></h6>
 																			 </li>

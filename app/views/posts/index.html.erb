@@ -1,13 +1,21 @@
-<div class="container">  
-  　<div class="row">
-          <div class="col-sm-8">
-            <ul class="nav nav-pills">
-                <%= link_to 'フォロー投稿',  root_url, class: 'nav-link' %>
-                <%= link_to '投稿一覧',  posts_path, class: 'nav-link' %>
-            </ul>
-      　   </div>
-            <%= render 'posts/posts', posts: @posts %>
  
-    <%= render 'posts/posts', posts: @posts %> 
+  　<div class="row">
+      <div class="col-sm-8">
+             <ul class="nav nav-pills nav-justified mb-3">
+             
+                  <li class="nav-item"><a href="<%= posts_path %>" class="nav-link
+                <%= 'active' if current_page?(posts_path) %>">全ての投稿
+                  <span class="badge badge-secondary"></a></li>
+                  
+                  <li class="nav-item"><a href="<%= root_url %>" class="nav-link
+                <%= 'active' if current_page?(root_url) %>">フォローした投稿
+                  <span class="badge badge-secondary"></a></li>  
+            </ul>
+      </div>
+            <%= render 'posts/posts', posts: @posts %>
     </div>
-</div>
+
+
+         
+                <%#= link_to 'フォロー投稿',  root_url, class: 'nav-link' %>
+                <%#= link_to '投稿一覧',  posts_path, class: 'nav-link' %>

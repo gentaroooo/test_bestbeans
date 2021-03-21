@@ -4,25 +4,23 @@
           　<div class="media">
             <!--ユーザー画像-->
                 <p>
-                <% if @user.image? %> 
-                  <%= image_tag @user.image.url, size: "100x100", alt: "アイコン",
-                  class: "user-icon" %>
-                  <% else %>
-                  <%= image_tag "/assets/human.png", :size => '100x100' %>
-                <% end %>  
-                 </p>
+                    <% if @user.image? %> 
+                      <%= image_tag @user.image.url, size: "100x100", alt: "アイコン", class: "user-icon" %>
+                      <% else %>
+                      <%= image_tag "/assets/human.png", :size => '100x100', class: "user-icon"  %>
+                    <% end %>  
+                </p>
                 <div class="media-body">
-                <!--ユーザー名-->
-                <h1><%= @user.name %></h1>
-                <!--フォローボタン-->
-                <%= render 'relationships/follow_button', user: @user %>
+                    <!--ユーザー名-->
+                    <h1><%= @user.name %></h1>
+                    <!--フォローボタン-->
+                    <%= render 'relationships/follow_button', user: @user %>
                 </div>
             </div>
 
-
-    <ul class="nav nav-tabs nav-justified mb-3">
+    <ul class="nav nav-pills nav-justified mb-3">
       <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link 
-      <%= 'active' if current_page?(user_path(@user)) %>">自分の投稿
+      <%= 'active' if current_page?(user_path(@user)) %>">投稿
       <span class="badge badge-secondary"><%= @count_posts %></span></a></li>
       
       <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link
