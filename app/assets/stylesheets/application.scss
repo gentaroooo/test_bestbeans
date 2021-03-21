@@ -42,5 +42,8 @@
 
  
  .user-icon {
-  border-radius: 100px;
+   object-fit: cover;
+   border-radius: 50%;
+   object-position:0px 0px;
+   border: 1px solid #C0C0C0
 }

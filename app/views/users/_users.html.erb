@@ -11,11 +11,9 @@
               <h5 class="card-title">
                 <% if user.image? %>
                 <!--ユーザー画像を表示-->
-                <%= link_to (image_tag "#{user.image}",
-                class: "user-icon", size: "100x100"), user_path(user) %>
+                <%= link_to (image_tag "#{user.image}", class: "user-icon", size: "100x100"), user_path(user) %>
                 <% else %>
-                <%= link_to (image_tag "/assets/human.png",
-                class: "user-icon", size: "100x100"), user_path(user) %>
+                <%= link_to (image_tag "/assets/human.png", class: "user-icon", size: "100x100"), user_path(user) %>
                 <% end %>
               </h5>
               <!--フォローボタン-->
