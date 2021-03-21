@@ -1,16 +1,16 @@
 <div class="row">
 		 <% posts.each do |post| %>
-					    <aside class="col-sm-5">
-							     <div class="card-deck" style="width:25rem">
+					    <aside class="col-sm-4">
+							     <div class="card-deck" style="width:15rem">
 							        <div class="card text-center">
 							           <div class="card-img-top">
 																		<!--ユーザー名-->
 																		<p><%= link_to post.user.name, user_path(post.user) %></p>
 																		<!--画像の表示-->
 																		<%if post.image? %> 
-					                <%= image_tag post.image.url, size: "300x200", alt: "アイコン" %>
+					                <%= image_tag post.image.url, size: "200x100", alt: "アイコン" %>
 					                <% else %>
-					                <%= image_tag "/assets/beans.jpg", :size => '300x200' %>
+					                <%= image_tag "/assets/beans.jpg", :size => '200x100' %>
 							           <% end %>
 							           </div>
 							           <div class="card-body">
@@ -19,7 +19,7 @@
 							           </div>
 		                   <!--投稿時間  -->
 		                   <div class="card-footer">
-		     	              投稿日時<%= post.created_at %>
+		     	             <%= time_ago_in_words(post.created_at) %>
 							               <!-- いいね登録ボタン -->
 							               <%= render 'favorites/favorite_button', post: post %>
 							               <!-- 編集ボタン -->
