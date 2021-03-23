@@ -1,27 +1,31 @@
-<div class="row">
-  <div class="col-sm-8">
-    <% if logged_in? %>
+<div class="container">
+   <div class="row">
+     <div class="col-sm-8">
+       <% if logged_in? %>
          <ul class="nav nav-pills nav-justified mb-3">
-         
-            <li class="nav-item"><a href="<%= root_url %>" class="nav-link
-            <%= 'active' if current_page?(root_url) %>">フォローした投稿
-            <span class="badge badge-secondary"></a></li>  
             
-            <li class="nav-item"><a href="<%= posts_path %>" class="nav-link
-            <%= 'active' if current_page?(posts_path) %>">全ての投稿
-            <span class="badge badge-secondary"></a></li>
-        </ul>
-  </div>        
-            <%= render 'posts/posts', posts: @posts %>
-</div>         
-
-    <p><%= paginate @posts %></p>
-    
-        <% else %>
-              <div class="top-main text-center">
-                  <h1>美味しいコーヒ豆を紹介しよう</h1>
-                  <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
-                  <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %> 
-              </div>
-        <% end %>
+               <li class="nav-item"><a href="<%= root_url %>" class="nav-link
+               <%= 'active' if current_page?(root_url) %>">フォローした投稿
+               <span class="badge badge-secondary"></a></li>  
+               
+               <li class="nav-item"><a href="<%= posts_path %>" class="nav-link
+               <%= 'active' if current_page?(posts_path) %>">全ての投稿
+               <span class="badge badge-secondary"></a></li>
+          </ul>
+     </div>
+     <p><%= render 'posts/posts', posts: @posts %></p>
+   </div>  
+          <p><%= paginate @posts %></p>
+       
+       <% else %>
+        <header class="masthead">
+               <div class="container">
+                   <div class="masthead-subheading">Welcome To BestBeans!</div>
+                   <div class="masthead-heading text-uppercase">美味しいコーヒー豆を紹介しよう</div>
+                   <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary ' %>
+                   <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %> 
+               </div>
+        </header>
+           <% end %>
+   </div>
 </div>
