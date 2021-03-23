@@ -31,6 +31,7 @@
   border-radius: 50px;
   /* 背景画像のCSS */
   background-image: url("coffee1.jpg");
+  object-fit: cover;
 }
 
 // ユーザー画像
@@ -42,6 +43,13 @@
  .user-icon {
    object-fit: cover;
    border-radius: 50%;
+   object-position:0px 0px;
+   border: 1px solid #C0C0C0
+}
+
+ .post-icon {
+   object-fit: cover;
+   border-radius: 5px;
    object-position:0px 0px;
    border: 1px solid #C0C0C0
 }

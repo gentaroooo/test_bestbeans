@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy, :edit, :show, :update]
+  before_action :correct_user, only: [:destroy, :edit, :update,]
   
+  def show
+    @post = Post.find(params[:id])
+    @users = @post.users.order(id: :desc).page(params[:page])
+  end
   
   def index
-    @posts = Post.order(id: :desc).page(params[:page]).per(25)
+    @posts = Post.order(id: :desc).page(params[:page]).per(6)
   end
 
   def new
@@ -41,21 +45,20 @@ class PostsController < ApplicationController
     else
       flash.now[:danger] = 'メッセージは更新されませんでした'
       render :edit
-      
     end
-  end
+  end  
+    
+    
   private
 
   def post_params
     params.require(:post).permit(:content, :image)
   end
-
+  
   def correct_user
     @post = current_user.posts.find_by(id: params[:id])
     unless @post
       redirect_to root_url
     end
   end
-  
-
 end

@@ -19,9 +19,10 @@
 																					<!--投稿画像の表示-->
 																					<p>
 																							<%if post.image? %> 
-										                <%= image_tag post.image.url, size: "200x100", alt: "アイコン" %>
+										                <%#= image_tag post.image.url, size: "200x100", alt: "アイコン" %>
+										                <%= link_to (image_tag "#{post.image.url}", class: "post-icon", size: "100x100"), post_path(post) %>
 										                <% else %>
-										                <%= image_tag "/assets/beans.jpg", :size => '200x100' %>
+										                <%= link_to (image_tag "/assets/beans.jpg", class: "post-icon", size: "100x100"), post_path(post) %>
 												           <% end %>
 												         </p>
 				                 <!--投稿内容の表示-->
