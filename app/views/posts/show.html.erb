@@ -1,7 +1,7 @@
 <div class="row">
 
 	<aside class="col-sm-4">
-		<div class="card" style="width:18rem">
+		<div class="card" style="width:20rem">
 			<div class="card text-center">
 				<div class="card-header">
 					<!--ユーザー名と画像を表示-->
@@ -19,9 +19,9 @@
 				<!--投稿画像の表示-->
 				<p>
 				<%if @post.image? %> 
-					<%= image_tag @post.image.url, size: "300x200", alt: "アイコン", class: "post-icon" %>
+					<%= image_tag @post.image.url, size: "250x200", alt: "アイコン", class: "post-icon" %>
 					<% else %>
-					<%= image_tag "/assets/beans.jpg", size: "300x200", alt: "アイコン", class: "post-icon" %>
+					<%= image_tag "/assets/defo.jpg", size: "250x200", alt: "アイコン", class: "post-icon" %>
 					<% end %>
 					</p>
 					<!--投稿内容の表示-->

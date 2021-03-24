@@ -5,6 +5,7 @@
  <div class="row">
       <div class="col-sm-6 offset-sm-3">
       　　　<%= form_with(model: @post, local: true) do |f| %>
+      　　     <%= render 'layouts/error_messages', model: f.object %>
         <div class="form-group">
           <p><%= f.text_area :content, class: 'form-control', rows: 5 %>
           <i class="fas fa-images"></i>画像アップ

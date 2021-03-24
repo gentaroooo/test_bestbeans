@@ -3,8 +3,8 @@
         <%= hidden_field_tag :post_id, post.id %>
         
        <!--いいね取り消しボタン-->
-       <%= button_tag(data: { disable_with: "いいね" }, class: "btn btn-sm") do%>
-         <i class="fas fa-heart unlike-btn"></i>
+       <%= button_tag(data: { disable_with: "取り消し" }, class: "btn btn-sm") do%>
+         <i class="fas fa-heart unlike-btn"></i><%= post.favorites.count %>
        <% end %>
         
       <% end %>
@@ -13,8 +13,8 @@
         <%= hidden_field_tag :post_id, post.id %>
       
        <!--いいねボタン-->
-       <%= button_tag(data: { disable_with: "いいね" }, class: "btn btn-sm") do%>
-         <i class="far fa-heart like-btn" ></i>
+       <%= button_tag(data: { disable_with: "いいね" }, class: "btn btn-sm") do%><%= @count_favorites %>
+         <i class="far fa-heart like-btn" ></i><%= post.favorites.count %>
        <% end %>
 
     <% end %>
