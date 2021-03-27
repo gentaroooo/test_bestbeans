@@ -1,52 +1,52 @@
 <div class="row">
-		 <% posts.each do |post| %>
-					    <aside class="col-sm-4">
-							     <div class="card-deck">
-							        <div class="card">
-							           <div class="card-header">
-							             <!--ユーザー名と画像を表示-->
-									           <li class="media">
-																					 <% if post.user.image? %>
-																						 <%= link_to (image_tag "#{post.user.image}", class: "user-icon", size: "50x50"), user_path(post.user) %>
-																					 <% else %>
-					                　 <%= link_to (image_tag "/assets/human.png", class: "user-icon", size: "50x50"), user_path(post.user) %>
-					                 <% end %>
-						                
-																						<h6><%= post.user.name %></h6>
-																			 </li>
-                  </div>
-                  <div class="card-body">
-																					<!--投稿画像の表示-->
-																					<p>
-																							<%if post.image? %> 
-										                <%= link_to (image_tag "#{post.image.url}", class: "post-icon", size: "100x100"), post_path(post) %>
-										                <% else %>
-										                <%= link_to (image_tag "/assets/defo.jpg", class: "post-icon", size: "100x100"), post_path(post) %>
-												           <% end %>
-												         </p>
-				                 <!--投稿内容の表示-->
-				                  <h6><%= post.content %></h6>
-							           </div>
-		                  <!--投稿時間  -->
-                  <div class="card-footer">
-                    <div class="post-time">
-				    	              <%= time_ago_in_words(post.created_at) %>  ago
-								               <!-- いいね登録ボタン -->
-								               <%= render 'favorites/favorite_button', post: post %>
-						              </div>
-								               <!-- 編集ボタン -->
-								               <% if current_user == post.user %>
-								               <%= link_to edit_post_path(post), class: 'btn btn btn-secondary 
-								               text-white btn-sm' do %><i class="fas fa-pen"></i><% end %>
-								               <% end %>
-								               <!--削除ボタン-->
-								               <% if current_user == post.user %>
-								               <%= link_to post, method: :delete, data: { confirm: "You sure?" },
-								               class: 'btn btn-danger text-white btn-sm' do %> <i class="far fa-trash-alt"></i><% end %>
-								               <% end %>
-							           </div>
-							     </div>
-					  　</aside>
-		 <% end %>
+	<% posts.each do |post| %>
+		<aside class="col-sm-4">
+			<div class="card-deck">
+				<div class="card">
+					<div class="card-header">
+						<!--ユーザー名と画像を表示-->
+						<li class="media">
+						<% if post.user.image? %>
+							<%= link_to (image_tag "#{post.user.image}", class: "user-icon", size: "50x50"), user_path(post.user) %>
+							<% else %>
+							　 <%= link_to (image_tag "/assets/human.png", class: "user-icon", size: "50x50"), user_path(post.user) %>
+							<% end %>
+							
+							<h6><%= post.user.name %></h6>
+						</li>
+					</div>
+					<div class="card-body">
+						<!--投稿画像の表示-->
+						<p>
+							<%if post.image? %> 
+							<%= link_to (image_tag "#{post.image.url}", class: "post-icon", size: "100x100"), post_path(post) %>
+							<% else %>
+							<%= link_to (image_tag "/assets/defo.jpg", class: "post-icon", size: "100x100"), post_path(post) %>
+							<% end %>
+						</p>
+						<!--投稿内容の表示-->
+						<h6><%= post.content %></h6>
+					</div>
+					<!--投稿時間  -->
+					<div class="card-footer">
+						<div class="post-time">
+						<%= time_ago_in_words(post.created_at) %>  ago
+						<!-- いいね登録ボタン -->
+						<%= render 'favorites/favorite_button', post: post %>
+					</div>
+					<!-- 編集ボタン -->
+					<% if current_user == post.user %>
+						<%= link_to edit_post_path(post), class: 'btn btn btn-secondary 
+						text-white btn-sm' do %><i class="fas fa-pen"></i><% end %>
+						<% end %>
+						<!--削除ボタン-->
+						<% if current_user == post.user %>
+						<%= link_to post, method: :delete, data: { confirm: "You sure?" },
+						class: 'btn btn-danger text-white btn-sm' do %> <i class="far fa-trash-alt"></i><% end %>
+					<% end %>
+				</div>
+			</div>
+		</aside>
+	<% end %>
 </div>  
-  
+

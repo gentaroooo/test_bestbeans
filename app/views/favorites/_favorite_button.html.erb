@@ -13,7 +13,7 @@
         <%= hidden_field_tag :post_id, post.id %>
       
        <!--いいねボタン-->
-       <%= button_tag(data: { disable_with: "いいね" }, class: "btn btn-sm") do%><%= @count_favorites %>
+       <%= button_tag(data: { disable_with: "いいね" }, class: "btn btn-sm") do%>
          <i class="far fa-heart like-btn" ></i><%= post.favorites.count %>
        <% end %>
 
