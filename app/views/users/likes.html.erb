@@ -1,5 +1,5 @@
 <div class="row">
-   <div class="col-sm-8">
+   <div class="col-sm-12">
       <div class="text-center">
           　<div class="media">
             <!--ユーザー画像-->
@@ -37,5 +37,6 @@
       
     </ul>
     <%= render 'posts/posts', posts: @likes %>
+    <p><%= paginate @likes %></p>
   </div>
 </div>

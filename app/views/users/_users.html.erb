@@ -1,27 +1,26 @@
-<% if users.any? %>
-  <ul class="list-unstyled">
-    <% users.each do |user| %>
-      <li class="media">
-        <div class="card">
-          <div class="card-header">
-          　<!--ユーザー名を表示-->
-            <%= user.name %>
-          </div>
-          <div class="card-body">
-              <h5 class="card-title">
-                <% if user.image? %>
-                <!--ユーザー画像を表示-->
-                <%= link_to (image_tag "#{user.image}", class: "user-icon", size: "100x100"), user_path(user) %>
-                <% else %>
-                <%= link_to (image_tag "/assets/human.png", class: "user-icon", size: "100x100"), user_path(user) %>
-                <% end %>
-              </h5>
-              <!--フォローボタン-->
-              <%= render 'relationships/follow_button', user: user %>
-          </div>
-        </div> 
-      </li>
-    <% end %>
-  </ul>
-  <%= paginate users %>
-<% end %>
+<div class="row">
+   <% if users.any? %>
+      <% users.each do |user| %>
+         <aside class="col-sm-3">
+            <div class="card">
+               <div class="card-header">
+                  <!--ユーザー名を表示-->
+                  <%= user.name %>
+               </div>
+               <div class="card-body">
+                  <h5 class="card-title">
+                  <% if user.image? %>
+                  <!--ユーザー画像を表示-->
+                  <%= link_to (image_tag "#{user.image}", class: "user-icon", size: "100x100"), user_path(user) %>
+                  <% else %>
+                  <%= link_to (image_tag "/assets/human.png", class: "user-icon", size: "100x100"), user_path(user) %>
+                  <% end %>
+                  </h5>
+                  <!--フォローボタン-->
+                  <%= render 'relationships/follow_button', user: user %>
+               </div>
+            </div> 
+         </aside>
+      <% end %>
+   <% end %>
+</div> 

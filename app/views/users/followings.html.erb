@@ -1,5 +1,5 @@
 <div class="row">
-   <div class="col-sm-8">
+   <div class="col-sm-12">
       <div class="text-center">
           　<div class="media">
             <!--ユーザー画像-->
@@ -37,5 +37,7 @@
        <span class="badge badge-secondary"><%= @count_favorites %></span></a></li>
     </ul>
     <%= render 'users', users: @followings %>
+    <p><%= paginate @followings %></p>
+   
   </div>
 </div>

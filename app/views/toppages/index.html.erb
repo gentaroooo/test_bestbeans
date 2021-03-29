@@ -1,6 +1,6 @@
 <div class="container">
    <div class="row">
-     <div class="col-sm-8">
+     <div class="col-sm-12">
          <div class="text-center">
                <% if logged_in? %>
                  <ul class="nav nav-pills nav-justified mb-3">
@@ -13,11 +13,8 @@
                        <%= 'active' if current_page?(posts_path) %>">全ての投稿
                        <span class="badge badge-secondary"></a></li>
                   </ul>
-            
-             <p><%= render 'posts/posts', posts: @posts %></p>
-     
-                  <p><%= paginate @posts %></p>
-               
+                  <p><%= render 'posts/posts', posts: @posts %></p>
+                  <%= paginate @posts %>
                <% else %>
                 <header class="masthead">
                        <div class="container">
@@ -27,7 +24,7 @@
                            <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %> 
                        </div>
                 </header>
-                   <% end %>
+                <% end %>
          </div>
    </div>
 </div>
