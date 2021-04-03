@@ -5,9 +5,9 @@
             <!--ユーザー画像-->
                 <p>
                     <% if @user.image? %> 
-                      <%= image_tag @user.image.url, size: "100x100", alt: "アイコン", class: "user-icon" %>
+                      <%= image_tag @user.image.url, size: "100x100", alt: "ユーザー画像", class: "user-icon" %>
                       <% else %>
-                      <%= image_tag "/assets/human.png", :size => '100x100', class: "user-icon"  %>
+                      <%= image_tag "/assets/human.png", :size => '100x100', class: "user-icon", alt: "ユーザー画像" %>
                     <% end %>  
                 </p>
                 <div class="media-body">
@@ -37,8 +37,8 @@
                     <span class="badge badge-secondary"><%= @count_favorites %></span></a></li>
                 </ul>
            
-            <p><%= render 'posts/posts', posts: @posts %></p>
-              <p><%= paginate @posts %></p>
+            <%= render 'posts/posts', posts: @posts %>
+            <%= paginate @posts %>
       </div>
   </div>
 </div>

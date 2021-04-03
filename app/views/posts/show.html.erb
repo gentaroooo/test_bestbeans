@@ -1,25 +1,24 @@
-<div class="row">
 	<div class="col-sm-12">
 		<div class="card">
 			<div class="card text-center">
 				<div class="card-header">
 					<!--ユーザー名と画像を表示-->
-					<li class="media">
+					<div class="media">
 						<% if @post.user.image? %>
-						<%= link_to (image_tag "#{@post.user.image}", class: "user-icon", size: "50x50"), user_path(@post.user) %>
+						<%= link_to (image_tag "#{@post.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(@post.user) %>
 						<% else %>
-						　 <%= link_to (image_tag "/assets/human.png", class: "user-icon", size: "50x50"), user_path(@post.user) %>
+                  <%= link_to (image_tag "/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(@post.user) %>
 						<% end %>
 						<h6><%= @post.user.name %></h6>
-					</li>
+					</div>
 				</div>
 				<div class="card-body">
 					<!--投稿画像の表示-->
 					<p>
 					<%if @post.image? %> 
-					<%= image_tag @post.image.url, size: "250x200", alt: "アイコン", class: "post-icon" %>
+					<%= image_tag @post.image.url, size: "250x200", alt: "投稿画像", class: "post-icon" %>
 					<% else %>
-					<%= image_tag "/assets/defo.jpg", size: "250x200", alt: "アイコン", class: "post-icon" %>
+					<%= image_tag "/assets/defo.jpg", size: "250x200", alt: "投稿画像", class: "post-icon" %>
 					<% end %>
 					</p>
 					<!--投稿内容の表示-->
@@ -33,5 +32,3 @@
 			</div>
 		</div>
 	</div>
-</div>  
-

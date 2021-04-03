@@ -1,16 +1,16 @@
   <% if current_user.favorite?(post) %>
      <%= form_with(model: current_user.favorites.find_by(post_id: post.id), local: true, method: :delete) do |f| %>
-        <%= hidden_field_tag :post_id, post.id %>
+        <%= hidden_field_tag :post_id, post.id, id: "post_id_#{post.id}" %>
         
        <!--いいね取り消しボタン-->
-       <%= button_tag(data: { disable_with: "取り消し" }, class: "btn btn-sm") do%>
+       <%= button_tag(data: { disable_with: "取り消し" }, class: "btn btn-sm") do %>
          <i class="fas fa-heart unlike-btn"></i><%= post.favorites.count %>
        <% end %>
         
       <% end %>
     <% else %>
       <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
-        <%= hidden_field_tag :post_id, post.id %>
+        <%= hidden_field_tag :post_id, post.id, id: "post_id_#{post.id}" %>
       
        <!--いいねボタン-->
        <%= button_tag(data: { disable_with: "いいね" }, class: "btn btn-sm") do%>
