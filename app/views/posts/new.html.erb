@@ -6,7 +6,7 @@
             <%= render 'layouts/error_messages', model: f.object %>
             <p></p>
             <div class="form-group">
-            <p><%= f.text_area :content, class: 'form-control', rows: 5 %></p> 
+            <p><%= f.text_area :content, class: 'form-control', rows: 10 %></p> 
             <i class="fas fa-images"></i>画像アップ
             <p><%= f.file_field :image %></p> 
             <%= f.submit '投稿する', class: 'btn btn-primary btn-block' %>
