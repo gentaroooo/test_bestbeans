@@ -25,7 +25,7 @@
 					<% end %>
 					</p>
 					<!--投稿内容の表示-->
-					<h6><%= safe_join(post.content.split("\n"),tag(:br)) %></h6>
+					<h6><%= safe_join(post.content.truncate(10).split("\n"),tag(:br)) %></h6>
 				</div>
 				<!--投稿時間  -->
 				<div class="card-footer">

@@ -16,7 +16,7 @@
                 <li class="nav-item"><%= link_to users_path, class: 'nav-link' do %><i class="fas fa-users"></i><% end %></li>
 
                 <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name.truncate(10) %></a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <!--プロフィール-->
                         <li class="dropdown-item"><%= link_to user_path(current_user), class: "btn" do %>
