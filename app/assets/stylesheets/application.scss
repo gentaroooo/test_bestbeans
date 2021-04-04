@@ -96,26 +96,25 @@ header.masthead .masthead-heading {
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #D9E5FF;
-  border-color: #D9E5FF;
+  background-color: #6f7375;
+  border-color:#6f7375;
 }
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
-  background-color: #D9E5FF;
-  border-color: #D9E5FF;
+  background-color: #6f7375;
+  border-color: #6f7375;
   box-shadow: 0 0 0 0.2rem rgba(254, 216, 84, 0.5);
 }
 .btn-primary.disabled, .btn-primary:disabled {
   color: #fff;
-  background-color: #D9E5FF;
-  border-color: #D9E5FF;
+  background-color:#6f7375;
+  border-color: #6f7375;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #D9E5FF;
-  border-color: #D9E5FF;
+  background-color: #6f7375;
+  border-color:#6f7375;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(254, 216, 84, 0.5);
 }
-
