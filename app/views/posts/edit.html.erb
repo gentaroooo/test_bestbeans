@@ -6,32 +6,9 @@
       <%= render 'layouts/error_messages', model: f.object %>
       <p></p>
       <div class="form-group">
-          <!--投稿内容編集-->
          <p><%= f.text_area :content, class: 'form-control', rows: 5 %></p>
-
-         <%#if @post.image? %> 
-            <!--画像登録があった場合-->
-            <!--<div class="card">-->
-            <!--   <div class="card-body">-->
-            <!--      <p><i class="fas fa-images"></i>投稿した画像</p>-->
-                  <%#= link_to (image_tag "#{@post.image.url}", class: "post-icon", size: "180x150", alt: "投稿画像") %>
-               <!--</div>-->
-               <!--<p class="card-text">-->
-               <!--   <i class="fas fa-exchange-alt"></i>画像変更-->
-                  <%#= f.file_field :image %> 
-            <!--   </p>   -->
-            <!--</div>-->
-            <!--<p></p>-->
-            <%# else %>
-            画像登録がなかった場合
-            <div class="card">
-               <div class="card-body">
-               <i class="fas fa-images"></i>画像アップ
-               <%= f.file_field :image %> 
-               </div>
-            </div>
-            <!--<p></p>-->
-         <%# end %>
+         <i class="fas fa-images"></i>画像アップ
+         <p><%= f.file_field :image %></p> 
          <%= f.submit '更新する', class: 'btn btn-primary btn-block' %>
       </div>
       <% end %>
