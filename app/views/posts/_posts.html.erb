@@ -18,9 +18,9 @@
 				<!--投稿画像の表示-->
 					<p>
 					<%if post.image? %> 
-					<%= link_to (image_tag "#{post.image.url}", class: "post-icon", size: "180x150", alt: "投稿画像"), post_path(post) %>
+					<%= link_to (image_tag "#{post.image.url}", class: "post-icon", size: "180x120", alt: "投稿画像"), post_path(post) %>
 					<% else %>
-					<%= link_to (image_tag "/assets/defo.jpg", class: "post-icon", size: "100x100", alt: "投稿画像"), post_path(post) %>
+					<%= link_to (image_tag "/assets/defo.jpg", class: "post-icon", size: "100x75", alt: "投稿画像"), post_path(post) %>
 					<% end %>
 					</p>
 					<!--投稿内容の表示-->

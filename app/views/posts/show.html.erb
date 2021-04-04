@@ -16,9 +16,9 @@
 					<!--投稿画像の表示-->
 					<p>
 					<%if @post.image? %> 
-					<%= image_tag @post.image.url, size: "250x200", alt: "投稿画像", class: "post-icon" %>
+					<%= image_tag @post.image.url, size: "350x233", alt: "投稿画像", class: "post-icon" %>
 					<% else %>
-					<%= image_tag "/assets/defo.jpg", size: "250x200", alt: "投稿画像", class: "post-icon" %>
+					<%= image_tag "/assets/defo.jpg", size: "350x233", alt: "投稿画像", class: "post-icon" %>
 					<% end %>
 					</p>
 					<!--投稿内容の表示-->
