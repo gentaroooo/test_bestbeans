@@ -118,3 +118,19 @@ header.masthead .masthead-heading {
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(254, 216, 84, 0.5);
 }
+
+
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+
+  color: #fff;
+  background-color: #4682B4;
+  border-color:#4682B4;
+
+}
+
+.navbar-brand {
+      font-size: 24px;
+    font-style: oblique;
+    font-family: Times New Roman, "ＭＳ Ｐゴシック";
+}

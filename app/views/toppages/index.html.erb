@@ -3,13 +3,15 @@
          <div class="text-center">
                <% if logged_in? %>
                  <ul class="nav nav-pills nav-justified mb-3">
-                    
-                       <li class="nav-item"><a href="<%= root_url %>" class="nav-link
-                       <%= 'active' if current_page?(root_url) %>">フォローした投稿
+                     　
+                     　<!--フォローしたユーザーの投稿-->
+                       <li class="nav-item "><a href="<%= root_url %>" class="nav-link
+                       <%= 'active' if current_page?(root_url) %>"><i class="fas fa-home"></i>
                        <span class="badge badge-secondary"></span></a></li>  
                        
-                       <li class="nav-item"><a href="<%= posts_path %>" class="nav-link
-                       <%= 'active' if current_page?(posts_path) %>">全ての投稿
+                       <!--全ての投稿-->
+                       <li class="nav-item "><a href="<%= posts_path %>" class="nav-link
+                       <%= 'active' if current_page?(posts_path) %>"><i class="fas fa-grip-horizontal"></i>
                        <span class="badge badge-secondary"></span></a></li>
                   </ul>
                   <%= render 'posts/posts', posts: @posts %>
