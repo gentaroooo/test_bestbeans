@@ -62,3 +62,9 @@ gem 'cloudinary'
 group :production do
   gem 'pg'
 end
+
+gem 'devise'
+
+gem 'rails_admin', '~> 2.0.0.beta'
+
+gem 'rails-i18n'
