@@ -1,21 +1,21 @@
-   <div class="row">
-      <div class="col-sm-12">
-         <div class="text-center">
-            <ul class="nav nav-pills nav-fill mb-3">
-               
-               <!--フォローしたユーザーの投稿-->
-               <li class="nav-item"><a href="<%= root_url %>" class="nav-link
-               <%= 'active' if current_page?(root_url) %>"><i class="fas fa-home"></i></a></li> 
-               
-               <!--全ての投稿-->
-               <li class="nav-item"><a href="<%= posts_path %>" class="nav-link
-               <%= 'active' if current_page?(posts_path) %>"><i class="fas fa-grip-horizontal"></i></a></li>
-               
-            </ul>
+<div class="row">
+   <div class="col-sm-12">
+      <div class="text-center">
+         <ul class="nav nav-pills nav-fill mb-3">
             
-            <%= render 'posts/posts', posts: @posts %>
-            <%= paginate @posts %>
+            <!--フォローしたユーザーの投稿-->
+            <li class="nav-item"><a href="<%= root_url %>" class="nav-link
+            <%= 'active' if current_page?(root_url) %>"><i class="fas fa-home"></i></a></li> 
             
-         </div>  
-      </div>      
-   </div>
+            <!--全ての投稿-->
+            <li class="nav-item"><a href="<%= posts_path %>" class="nav-link
+            <%= 'active' if current_page?(posts_path) %>"><i class="fas fa-grip-horizontal"></i></a></li>
+            
+         </ul>
+         
+         <%= render 'posts/posts', posts: @posts %>
+         <%= paginate @posts %>
+         
+      </div>  
+   </div>      
+</div>
