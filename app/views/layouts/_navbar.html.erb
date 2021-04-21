@@ -28,6 +28,10 @@
                         <li class="dropdown-divider"></li>
                         <li class="dropdown-item"><%= link_to logout_path, method: :delete, class: "btn" do  %>
                         <i class="fas fa-sign-out-alt"></i>ログアウト<% end %></li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-item"><%= link_to user_path(current_user), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn" do %>
+                        <i class="fas fa-user-slash"></i>退会<% end %>
+
                     </ul>
                 </li>
                 <% else %>
