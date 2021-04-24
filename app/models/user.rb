@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :posts, :dependent => :destroy#退会時コメントも削除
   has_many :relationships, :dependent => :destroy
   has_many :followings, through: :relationships, source: :follow
-  has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id', :dependent => :destroy
   has_many :followers, through: :reverses_of_relationship, source: :user
   
   #いいね機能
