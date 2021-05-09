@@ -11,8 +11,17 @@
                     <% end %>  
                 </p>
                 <div class="media-body">
-                    <!--ユーザー名-->
-                    <h1><%= @user.name %></h1>
+                    <h1>
+                        <!--ユーザー名--> 
+                        <%= @user.name %>
+                    　　<!--退会ボタン-->
+                        <div class="text-right">
+                            <% if current_user == @user %>
+                             <%= link_to user_path(current_user), method: :delete, data: { confirm: "本当に削除しますか?" }, class: 'btn btn-danger text-white btn-sm' do %>
+                             <i class="fas fa-user-slash"></i>退会<% end %>
+                            <% end %>
+                        </div>
+                    </h1>
                     <!--フォローボタン-->
                     <%= render 'relationships/follow_button', user: @user %>
                 </div>

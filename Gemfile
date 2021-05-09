@@ -68,3 +68,7 @@ gem 'devise'
 gem 'rails_admin', '~> 2.0.0.beta'
 
 gem 'rails-i18n'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.6'
+end
