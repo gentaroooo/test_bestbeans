@@ -17,7 +17,7 @@
                     　　<!--退会ボタン-->
                         <div class="text-right">
                             <% if current_user == @user %>
-                             <%= link_to user_path(current_user), method: :delete, data: { confirm: "本当に削除しますか?" }, class: 'btn btn-danger text-white btn-sm' do %>
+                             <%= link_to user_path(current_user), method: :delete, data: { confirm: "本当に退会しますか?退会すると全てのデータが消去されます。" }, class: 'btn btn-danger text-white btn-sm' do %>
                              <i class="fas fa-user-slash"></i>退会<% end %>
                             <% end %>
                         </div>

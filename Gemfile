@@ -72,3 +72,5 @@ gem 'rails-i18n'
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'
 end
+
+gem 'dotenv-rails'
