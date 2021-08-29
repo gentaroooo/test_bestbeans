@@ -16,6 +16,7 @@ default: &default
   username: root
   password: going212
   socket: /tmp/mysql.sock
+  # socket: /var/lib/mysql/mysql.sock
 
 development:
   <<: *default
@@ -47,10 +48,18 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+#production:
+#  adapter: postgresql
+#  encoding: unicode
+#  pool: 5
+#  database: coffeeposts_production
+#  username: coffeeposts
+#  password: <%= ENV['COFFEEPOSTS_DATABASE_PASSWORD'] %>
+
+#最下部の本番環境の記述のみ変更します
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  database: coffeeposts_production
-  username: coffeeposts
-  password: <%= ENV['COFFEEPOSTS_DATABASE_PASSWORD'] %>
+  <<: *default
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOSTNAME'] %>

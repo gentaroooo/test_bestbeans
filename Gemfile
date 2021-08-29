@@ -74,3 +74,7 @@ group :development, :test do
 end
 
 gem 'dotenv-rails'
+
+group :production, :staging do
+    gem 'unicorn'
+end
