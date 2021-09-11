@@ -3,27 +3,33 @@
       <div class="text-center">
              <% if logged_in? %>
                <ul class="nav nav-pills nav-fill mb-3">
-                   　
                  <!--フォローしたユーザーの投稿-->
                  <li class="nav-item"><a href="<%= root_url %>" class="nav-link
-                 <%= 'active' if current_page?(root_url) %>"><i class="fas fa-home"></i></a></li> 
-                 
+                 <%= 'active' if current_page?(root_url) %>"><i class="fas fa-home"></i></a></li>
+
                  <!--全ての投稿-->
                  <li class="nav-item"><a href="<%= posts_path %>" class="nav-link
                  <%= 'active' if current_page?(posts_path) %>"><i class="fas fa-grip-horizontal"></i></a></li>
-               
+
                </ul>
                 <%= render 'posts/posts', posts: @posts %>
                 <%= paginate @posts %>
              <% else %>
                <header class="masthead">
-  
-                          <div class="masthead-subheading">Welcome To BestBeans!</div>
-                          <div class="masthead-heading text-uppercase">美味しいコーヒー豆を紹介しよう</div>
+
+                          <div class="masthead-heading text-uppercase">美味しいコーヒーを紹介しよう</div>
                           <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary ' %>
-                          <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %> 
-  
+                          <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %>
                </header>
+
+             <p></p><div class="intoro1">What's Bestbeans</div>
+             <img src="/assets/what2.png", width="350" height="300">
+             <div class="intoro2">あなたにっての最高の一杯、ほっとする一杯はいつどこで？投稿して共有しよう！</div>
+             <p></p><div class="intoro3">New post</div>
+
+             <%= render 'posts/toppages_posts', posts: @posts %>
+              <p><%= paginate @posts %></p>
+             </p>
              <% end %>
       </div>
    </div>

@@ -1,23 +1,23 @@
+
 <% unless current_user == user %>
   <% if current_user.following?(user) %>
-    <%= form_with(model: current_user.relationships.find_by(follow_id: user.id), local: true, method: :delete) do |f| %>
-      <%= hidden_field_tag :follow_id, user.id, id: "user_id_#{user.id}" %>
+   <tr id=follow_form>
+      <%= form_with(model: current_user.relationships.find_by(follow_id: user.id), remote: true, method: :delete) do |f| %>
+        <%= hidden_field_tag :follow_id, user.id, id: "user_id_#{user.id}" %>
 
-       <!--フォロー取り消しボタン-->
-       <%= button_tag(data: { disable_with: "フォロー削除" }, class: "btn btn-warning btn") do%>
-         フォロー済<i class="fas fa-handshake"></i>
-       <% end %>
-      
-    <% end %>
-  <% else %>
-    <%= form_with(model: current_user.relationships.build, local: true) do |f| %>
-       <%= hidden_field_tag :follow_id, user.id, id: "user_id_#{user.id}" %>
-      <!--フォローボタン-->
-       <%= button_tag(data: { disable_with: "フォロー" }, class: "btn btn-success btn") do%>
-         フォロー<i class="far fa-handshake"></i>
-       <% end %>
+         <!--フォロー取り消しボタン-->
+         <%= button_tag(data: { disable_with: "フォロー削除" }, class: "btn btn-warning btn") do%>
+           フォロー済<i class="fas fa-handshake"></i>
+         <% end %>
 
-    <% end %>
+      <% end %>
+    <% else %>
+      <%= form_with(model: current_user.relationships.build, remote: true) do |f| %>
+         <%= hidden_field_tag :follow_id, user.id, id: "user_id_#{user.id}" %>
+        <!--フォローボタン-->
+         <%= button_tag(data: { disable_with: "フォロー" }, class: "btn btn-success btn") do%>
+           フォロー<i class="far fa-handshake"></i>
+         <% end %>
+      <% end %>
   <% end %>
 <% end %>
-

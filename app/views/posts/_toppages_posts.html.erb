@@ -30,20 +30,7 @@
 				<!--投稿時間  -->
 				<div class="card-footer">
 					<div class="post-time">
-					<%= time_ago_in_words(post.created_at) %>  ago
-					<!-- いいね登録ボタン -->
-					<%= render 'favorites/favorite_button', post: post %>
-				</div>
-				<!-- 編集ボタン -->
-				<% if current_user == post.user %>
-					<%= link_to edit_post_path(post), class: 'btn btn btn-secondary
-					text-white btn-sm' do %><i class="fas fa-pen"></i><% end %>
-					<% end %>
-					<!--削除ボタン-->
-					<% if current_user == post.user %>
-					<%= link_to post, method: :delete, data: { confirm: "本当に削除しますか？" },
-					class: 'btn btn-danger text-white btn-sm' do %> <i class="far fa-trash-alt"></i><% end %>
-				<% end %>
+					<%= time_ago_in_words(post.created_at) %>前
 				</div>
 			</div>
 		</aside>

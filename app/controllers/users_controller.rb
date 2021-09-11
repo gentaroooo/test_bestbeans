@@ -32,19 +32,19 @@ class UsersController < ApplicationController
     @followings = @user.followings.page(params[:page]).per(8)
     counts(@user)
   end
-  
+
   def followers
     @user = User.find(params[:id])
     @followers = @user.followers.page(params[:page]).per(8)
     counts(@user)
   end
-  
+
   def likes
     @user = User.find(params[:id])
     @likes = @user.likes.page(params[:page]).per(6)
     counts(@user)
   end
-  
+
   def edit
     @user = User.find(params[:id])
   end
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @user = User.find_by(id: params[:id])
     @user.destroy
