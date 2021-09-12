@@ -1,3 +1,5 @@
+
+
 <%= form_with(model: current_user.relationships.build, remote: true) do |f| %>
    <%= hidden_field_tag :follow_id, user.id, id: "user_id_#{user.id}" %>
   <!--フォローボタン-->

@@ -16,8 +16,10 @@
                   <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "100x75", alt: "ユーザー画像"), user_path(user) %>
                   <% end %>
                   </h5>
+                  <div id="follow_user<%= user.id %>">
                   <!--フォローボタン-->
                   <%= render 'relationships/follow_button', user: user %>
+                  </div>
                </div>
             </div>
          </aside>

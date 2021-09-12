@@ -1,1 +1,3 @@
-$("#follow_form").html("<%= j(render "relationships/follow_button", user: user) %>");
+// $("#follow_form").html("test");
+$("#follow_user<%= @user.id %>").html("<%= j(render "relationships/follow_button", user: @user) %>");
+console.log("test");

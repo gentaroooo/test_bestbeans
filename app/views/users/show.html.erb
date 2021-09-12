@@ -4,15 +4,15 @@
           　<div class="media">
             <!--ユーザー画像-->
                 <p>
-                    <% if @user.image? %> 
+                    <% if @user.image? %>
                       <%= image_tag @user.image.url, size: "100x100", alt: "ユーザー画像", class: "user-icon" %>
                       <% else %>
                       <%= image_tag "/assets/human.png", :size => '100x100', class: "user-icon", alt: "ユーザー画像" %>
-                    <% end %>  
+                    <% end %>
                 </p>
                 <div class="media-body">
                     <h1>
-                        <!--ユーザー名--> 
+                        <!--ユーザー名-->
                         <%= @user.name %>
                     　　<!--退会ボタン-->
                         <div class="text-right">
@@ -22,29 +22,31 @@
                             <% end %>
                         </div>
                     </h1>
+                    <div id="follow_user<%= @user.id %>">
                     <!--フォローボタン-->
                     <%= render 'relationships/follow_button', user: @user %>
+                    </div>
                 </div>
             </div>
-            
+
                 <ul class="nav nav-pills nav-justified mb-3">
                     <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link
-                    <%= 'active' if current_page?(user_path(@user)) %>">投稿  
+                    <%= 'active' if current_page?(user_path(@user)) %>">投稿
                     <span class="badge badge-secondary"><%= @count_posts %></span></a></li>
-                    
-                    <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link 
-                    <%= 'active' if current_page?(followings_user_path(@user)) %>">フォロー  
+
+                    <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link
+                    <%= 'active' if current_page?(followings_user_path(@user)) %>">フォロー
                     <span class="badge badge-secondary"><%= @count_followings %></span></a></li>
-                    
+
                     <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link
-                    <%= 'active' if current_page?(followers_user_path(@user)) %>">フォロワー  
+                    <%= 'active' if current_page?(followers_user_path(@user)) %>">フォロワー
                     <span class="badge badge-secondary"><%= @count_followers %></span></a></li>
-                    
-                    <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link 
-                    <%= 'active' if current_page?(likes_user_path(@user)) %>">いいね 
+
+                    <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link
+                    <%= 'active' if current_page?(likes_user_path(@user)) %>">いいね
                     <span class="badge badge-secondary"><%= @count_favorites %></span></a></li>
                 </ul>
-           
+
             <%= render 'posts/posts', posts: @posts %>
             <%= paginate @posts %>
       </div>
