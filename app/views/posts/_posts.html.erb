@@ -9,7 +9,7 @@
 					<% if post.user.image? %>
 					<%= link_to image_tag("#{post.user.image}", class: "user-icon", size: "50x50", alt: "ユーザ画像"), user_path(post.user) %>
 					<% else %>
-					　 <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザ画像"), user_path(post.user) %>
+					 <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザ画像"), user_path(post.user) %>
 					<% end %>
 
 					<h6><%= post.user.name %></h6>
@@ -32,7 +32,9 @@
 					<div class="post-time">
 					<%= time_ago_in_words(post.created_at) %>  ago
 					<!-- いいね登録ボタン -->
+					<div id="like_post<%= post.id %>">
 					<%= render 'favorites/favorite_button', post: post %>
+					</div>
 				</div>
 				<!-- 編集ボタン -->
 				<% if current_user == post.user %>
