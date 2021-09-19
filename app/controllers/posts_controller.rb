@@ -4,7 +4,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @users = @post.users.order(id: :desc).page(params[:page])
+    # @users = @post.users.order(id: :desc).page(params[:page])
+    @comments = @post.comments.page(params[:page]).per(7).reverse_order  #この行を追記
+    # @comment = current_user.comments.new
+    @comment = Comment.new
   end
 
   def index
@@ -52,7 +55,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :image)
+    params.require(:post).permit(:content, :image, :post_id)
   end
 
   def correct_user
