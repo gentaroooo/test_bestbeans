@@ -15,46 +15,70 @@
 				<div class="card-body">
 					<!--投稿画像の表示-->
 					<p>
-					<%if @post.image? %>
-					<%= image_tag @post.image.url, size: "250x167", alt: "投稿画像", class: "post-icon" %>
-					<% else %>
-					<%= image_tag "/assets/defo.jpg", size: "250x167", alt: "投稿画像", class: "post-icon" %>
-					<% end %>
+						<%if @post.image? %>
+						<%= image_tag @post.image.url, size: "280x187", alt: "投稿画像", class: "post-icon" %>
+						<% else %>
+						<%= image_tag "/assets/defo.jpg", size: "250x167", alt: "投稿画像", class: "post-icon" %>
+						<% end %>
 					</p>
 					<!--投稿内容の表示-->
-
 					<h6><%= safe_join(@post.content.split("\n"),tag(:br)) %></h6>
+
+						<div class="post-time">
+								<!--投稿時間  -->
+								<%= time_ago_in_words(@post.created_at) %>前
+									<!-- いいね登録ボタン -->
+									<div id="like_post<%= @post.id %>">
+									<%= render 'favorites/favorite_button', post: @post %>
+									</div>
+						</div>
+						<!-- 編集ボタン -->
+						<% if current_user == @post.user %>
+								<%= link_to edit_post_path(@post), class: 'btn btn btn-secondary
+								text-white btn-sm' do %><i class="fas fa-pen"></i><% end %>
+						<% end %>
+								<!--削除ボタン-->
+						<% if current_user == @post.user %>
+								<%= link_to @post, method: :delete, data: { confirm: "本当に削除しますか？" },
+								class: 'btn btn-danger text-white btn-sm' do %> <i class="far fa-trash-alt"></i><% end %>
+						<% end %>
+						</div>
 				</div>
-				<!--投稿時間  -->
-				<div class="card-footer">
-					<%= time_ago_in_words(@post.created_at) %>
-					<!-- いいね登録ボタン -->
-					<div id="like_post<%= @post.id %>">
-					<%= render 'favorites/favorite_button', post: @post %>
+
+
+				<div class="text-center">
+					<div class="card-footer">
+						<p><i class="fas fa-edit"></i>コメント</p>
+
+								<!--コメント一覧-->
+								<% @post.comments.each do |comment| %>
+								<!--ユーザー名と画像を表示-->
+								<div class="comment_user">
+									<% if comment.user.image? %>
+									<%= link_to image_tag("#{comment.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+									<% else %>
+			                  <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+									<% end %>
+									<%= comment.user.name %> 　
+							  <%= time_ago_in_words(comment.created_at) %>前
+								<!--コメント一覧-->
+								<h6><%= comment.comment %></h6>
+                </div>
+							<% end %>
+
+							<!--コメント入力-->
+								<%= form_with(model:[ @post , @comment ], local:true) do |form| %>
+										<div class="form-group">
+												<p>
+														<%= form.label 'コメント投稿' %>
+														<%= form.text_area :comment,class: 'form-control' %>
+												</p>
+										</div>
+										<div class="form_action row ">
+														<%= form.submit 'コメントする', class: 'btn btn-primary btn-block' %>
+										</div>
+								<% end %>
 					</div>
-          <!--コメント-->
-
-					<%= form_with(model:[ @post , @comment ], local:true) do |form| %>
-					    <div class="form-group">
-					        <p>
-					            <%= form.label 'コメント(20文字未満)' %>
-					            <%= form.text_area :comment,class: 'form-control' %>
-					        </p>
-					    </div>
-					    <div class="form_action row">
-					        <%= form.submit 'コメント投稿',class: 'btn btn-primary' %>
-					    </div>
-					<% end %>
-
-					<% @post.comments.each do |comment| %>
-				   		<p>コメント内容<%= comment.comment %></p>
-							<p>コメントユーザー名<%= comment.user.name %>
-							<p>コメント日時<%= comment.created_at %>
-								<%= time_ago_in_words(comment.created_at) %> 前
-					 <% end %>
-				 </div>
-	    </div>
-	</div>
 				</div>
 			</div>
 		</div>
