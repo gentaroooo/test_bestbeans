@@ -20,24 +20,16 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    @comment = Comment.find(params[:id])
     flash[:success] = 'コメントを削除しました。'
     redirect_back(fallback_location: root_path)
-  end
-
-  def update
-    if @comment.update(comment_params)
-      flash[:success] = 'コメントは正常に更新されました'
-      redirect_to root_url
-    else
-      flash.now[:danger] = 'コメントは更新されませんでした'
-      render :edit
-    end
   end
 
   private
 
   def comment_params
     params.require(:comment).permit(:comment)
+
+
   end
 end

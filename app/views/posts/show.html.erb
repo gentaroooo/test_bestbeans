@@ -34,7 +34,7 @@
 					</div>
           <!--コメント-->
 
-					<%= form_with(model:[ @post, @post.comments.build ], local:true) do |form| %>
+					<%= form_with(model:[ @post , @comment ], local:true) do |form| %>
 					    <div class="form-group">
 					        <p>
 					            <%= form.label 'コメント(20文字未満)' %>
@@ -47,8 +47,10 @@
 					<% end %>
 
 					<% @post.comments.each do |comment| %>
-				   		<p><%= comment.comment %></p>
-							<%#= comment.user.name %>
+				   		<p>コメント内容<%= comment.comment %></p>
+							<p>コメントユーザー名<%= comment.user.name %>
+							<p>コメント日時<%= comment.created_at %>
+								<%= time_ago_in_words(comment.created_at) %> 前
 					 <% end %>
 				 </div>
 	    </div>
