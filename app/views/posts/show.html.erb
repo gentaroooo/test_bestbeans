@@ -1,60 +1,66 @@
 	<div class="col-sm-12">
-		<div class="card">
-			<div class="card text-center">
-				<div class="card-header">
-					<!--ユーザー名と画像を表示-->
-					<div class="media">
-						<% if @post.user.image? %>
-						<%= link_to image_tag("#{@post.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(@post.user) %>
-						<% else %>
-                  <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(@post.user) %>
-						<% end %>
-						<h6><%= @post.user.name %></h6>
-					</div>
-				</div>
-				<div class="card-body">
-					<!--投稿画像の表示-->
-					<p>
-						<%if @post.image? %>
-						<%= image_tag @post.image.url, size: "280x187", alt: "投稿画像", class: "post-icon" %>
-						<% else %>
-						<%= image_tag "/assets/defo.jpg", size: "250x167", alt: "投稿画像", class: "post-icon" %>
-						<% end %>
-					</p>
-					<!--投稿内容の表示-->
-					<h6><%= safe_join(@post.content.split("\n"),tag(:br)) %></h6>
+				<div class="card">
+							<div class="card text-center">
+									<div class="card-header">
+												<!--ユーザー名と画像を表示-->
+												<div class="media">
+													<% if @post.user.image? %>
+													<%= link_to image_tag("#{@post.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(@post.user) %>
+													<% else %>
+							                  <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(@post.user) %>
+													<% end %>
+													<h6><%= @post.user.name %></h6>
+												</div>
+									</div>
+									<div class="card-body">
+										<!--投稿画像の表示-->
+										<p>
+													<%if @post.image? %>
+													<%= image_tag @post.image.url, size: "280x187", alt: "投稿画像", class: "post-icon" %>
+													<% else %>
+													<%= image_tag "/assets/defo.jpg", size: "250x167", alt: "投稿画像", class: "post-icon" %>
+													<% end %>
+										</p>
+										<!--投稿内容の表示-->
+										<h6><%= safe_join(@post.content.split("\n"),tag(:br)) %></h6>
 
-						<div class="post-time">
-								<!--投稿時間  -->
-								<%= time_ago_in_words(@post.created_at) %>前
-									<!-- いいね登録ボタン -->
-									<div id="like_post<%= @post.id %>">
-									<%= render 'favorites/favorite_button', post: @post %>
+													<div class="post-time">
+															<!--投稿時間  -->
+															<%= time_ago_in_words(@post.created_at) %>前
+													</div>
+													<ul class="like_comment">
+															<li>
+																	<!-- いいね登録ボタン -->
+																	<div id="like_post<%= @post.id %>">
+																	<%= render 'favorites/favorite_button', post: @post %>
+															</li>
+															<li>
+																	<!--コメントボタン-->
+																	<i class="far fa-comments"></i><%= @post.comments.count %>
+															</li>
+															<li>
+																	　　
+																	<!-- 編集ボタン -->
+																	<% if current_user == @post.user %>
+																		<%= link_to edit_post_path(@post), class: 'btn btn btn-secondary
+																		text-white btn-sm' do %><i class="fas fa-pen"></i><% end %>
+															    <% end %>
+															</li>
+															<li>
+																<!--削除ボタン-->
+																<% if current_user == @post.user %>
+																		<%= link_to @post, method: :delete, data: { confirm: "本当に削除しますか？" },
+																		class: 'btn btn-danger text-white btn-sm' do %> <i class="far fa-trash-alt"></i><% end %>
+															  <% end %>
+															</li>
+													</ul>
 									</div>
 
-									<!--コメントボタン-->
-									<i class="far fa-comments"></i><%= @post.comments.count %>
-						</div>
-						<!-- 編集ボタン -->
-						<% if current_user == @post.user %>
-								<%= link_to edit_post_path(@post), class: 'btn btn btn-secondary
-								text-white btn-sm' do %><i class="fas fa-pen"></i><% end %>
-						<% end %>
-								<!--削除ボタン-->
-						<% if current_user == @post.user %>
-								<%= link_to @post, method: :delete, data: { confirm: "本当に削除しますか？" },
-								class: 'btn btn-danger text-white btn-sm' do %> <i class="far fa-trash-alt"></i><% end %>
-						<% end %>
-						</div>
-				</div>
-
-        <!--コメント-->
-				<!--コメント一覧-->
-				<%= render 'comments/index', commens: @comments %>
-				<%= render 'comments/new', commens: @comments %>
+					        <!--コメント-->
+									<!--コメント一覧-->
+									<%= render 'comments/index', commens: @comments %>
+									<%= render 'comments/new', commens: @comments %>
 
 					</div>
 				</div>
-			</div>
-		</div>
 	</div>

@@ -27,7 +27,16 @@
 															</p>
 															<!--投稿内容の表示-->
 															<h6><%= safe_join(post.content.truncate(10).split("\n"),tag(:br)) %></h6>
+
+															<div class="post-time">
+																	<!--投稿時間  -->
+																	<%= time_ago_in_words(post.created_at) %>前
+															</div>
 															<p>
+												</div>
+
+												<div class="card-footer">
+
 															<ul class="like_comment">
 																	<li>
 																			<!-- いいね登録ボタン -->
@@ -38,25 +47,22 @@
 																			<!--コメントボタン-->
 																			<i class="far fa-comments"></i><%= post.comments.count %>
 																	</li>
-															</ul>
-												</div>
-
-												<div class="card-footer">
-															<div class="post-time">
-																	<!--投稿時間  -->
-																	<%= time_ago_in_words(post.created_at) %>前
-															</div>
-												<!-- 編集ボタン -->
-												<% if current_user == post.user %>
-															<%= link_to edit_post_path(post), class: 'btn btn btn-secondary
-															text-white btn-sm' do %><i class="fas fa-pen"></i><% end %>
-												<% end %>
-													<!--削除ボタン-->
-													<% if current_user == post.user %>
-															<%= link_to post, method: :delete, data: { confirm: "本当に削除しますか？" },
-															class: 'btn btn-danger text-white btn-sm' do %> <i class="far fa-trash-alt"></i><% end %>
-														  <% end %>
-
+																	<li>
+																	　　
+																	<!-- 編集ボタン -->
+																	<% if current_user == post.user %>
+																				<%= link_to edit_post_path(post), class: 'btn btn btn-secondary
+																				text-white btn-sm' do %><i class="fas fa-pen"></i><% end %>
+																	<% end %>
+																	</loi?
+																	<li>
+																		<!--削除ボタン-->
+																		<% if current_user == post.user %>
+																				<%= link_to post, method: :delete, data: { confirm: "本当に削除しますか？" },
+																				class: 'btn btn-danger text-white btn-sm' do %> <i class="far fa-trash-alt"></i><% end %>
+																			  <% end %>
+																		</li>
+																</ul>
 										    </div>
 							    </div>
 						</aside>
