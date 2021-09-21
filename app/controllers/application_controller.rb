@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  
+
   include SessionsHelper
 
   def require_user_logged_in
@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     @count_followings = user.followings.count
     @count_followers = user.followers.count
     @count_favorites = user.favorites.count
+    @count_comments = user.comments.count
   end
-  
+
 end

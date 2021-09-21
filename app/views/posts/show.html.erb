@@ -31,6 +31,9 @@
 									<div id="like_post<%= @post.id %>">
 									<%= render 'favorites/favorite_button', post: @post %>
 									</div>
+
+									<!--コメントボタン-->
+									<i class="far fa-comments"></i><%= @post.comments.count %>
 						</div>
 						<!-- 編集ボタン -->
 						<% if current_user == @post.user %>
@@ -45,39 +48,11 @@
 						</div>
 				</div>
 
+        <!--コメント-->
+				<!--コメント一覧-->
+				<%= render 'comments/index', commens: @comments %>
+				<%= render 'comments/new', commens: @comments %>
 
-				<div class="text-center">
-					<div class="card-footer">
-						<p><i class="fas fa-edit"></i>コメント</p>
-
-								<!--コメント一覧-->
-								<% @post.comments.each do |comment| %>
-								<!--ユーザー名と画像を表示-->
-								<div class="comment_user">
-									<% if comment.user.image? %>
-									<%= link_to image_tag("#{comment.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
-									<% else %>
-			                  <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
-									<% end %>
-									<%= comment.user.name %> 　
-							  <%= time_ago_in_words(comment.created_at) %>前
-								<!--コメント一覧-->
-								<h6><%= comment.comment %></h6>
-                </div>
-							<% end %>
-
-							<!--コメント入力-->
-								<%= form_with(model:[ @post , @comment ], local:true) do |form| %>
-										<div class="form-group">
-												<p>
-														<%= form.label 'コメント投稿' %>
-														<%= form.text_area :comment,class: 'form-control' %>
-												</p>
-										</div>
-										<div class="form_action row ">
-														<%= form.submit 'コメントする', class: 'btn btn-primary btn-block' %>
-										</div>
-								<% end %>
 					</div>
 				</div>
 			</div>

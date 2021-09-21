@@ -1,7 +1,7 @@
 <div class="row">
    <div class="col-sm-12">
       <div class="text-center">
-          　<div class="media">
+           <div class="media">
             <!--ユーザー画像-->
                 <p>
                     <% if @user.image? %>
@@ -14,7 +14,7 @@
                     <h1>
                         <!--ユーザー名-->
                         <%= @user.name %>
-                    　　<!--退会ボタン-->
+                        <!--退会ボタン-->
                         <div class="text-right">
                             <% if current_user == @user %>
                              <%= link_to user_path(current_user), method: :delete, data: { confirm: "本当に退会しますか?退会すると全てのデータが消去されます。" }, class: 'btn btn-danger text-white btn-sm' do %>

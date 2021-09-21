@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   def index
     @comments = Post.order(id: :desc).page(params[:page]).per(6)
     @posts = Post.order(id: :desc).page(params[:page]).per(6)
+    @post = Post.find(params[:id])
   end
 
   def create
@@ -12,10 +13,10 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
       flash[:success] = 'コメントを投稿しました。'
-      redirect_to root_url
+      redirect_back(fallback_location: root_path)
     else
       flash.now[:danger] = 'コメントの投稿に失敗しました。'
-      redirect_to root_url
+      redirect_back(fallback_location: root_path)
     end
   end
 

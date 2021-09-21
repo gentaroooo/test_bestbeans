@@ -1,0 +1,12 @@
+<!--コメント入力-->
+<%= form_with(model:[ @post , @comment ], local:true) do |form| %>
+    <div class="form-group">
+        <p>
+            <h6><%= form.label 'コメント' %></h6>
+            <%= form.text_area :comment,class: 'form-control' %>
+        </p>
+    </div>
+    <div class="form_action row ">
+            <%= form.submit 'コメントする', class: 'btn btn-primary btn-block' %>
+    </div>
+<% end %>
