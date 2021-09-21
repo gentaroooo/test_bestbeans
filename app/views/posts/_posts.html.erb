@@ -16,10 +16,6 @@
 													    </div>
 												</div>
 
-												<div class="card-img-top">
-
-
-
 												<div class="card-body">
 														<!--投稿画像の表示-->
 															<p>
@@ -31,42 +27,24 @@
 															</p>
 															<!--投稿内容の表示-->
 															<h6><%= safe_join(post.content.truncate(10).split("\n"),tag(:br)) %></h6>
-
-															<div class="post_time">
-
-																	<!-- いいね登録ボタン -->
-																	<div id="like_post<%= post.id %>">
-																	<%= render 'favorites/favorite_button', post: post %>
-																	</div>
-
-
-
-																	<!--コメントボタン-->
-																	<i class="far fa-comments"></i><%= post.comments.count %>
-													
-						                  </div>
-
-
-															<!-- 編集ボタン -->
-															<% if current_user == post.user %>
-																		<%= link_to edit_post_path(post), class: 'btn btn btn-secondary
-																		text-white btn-sm' do %><i class="fas fa-pen"></i><% end %>
-															<% end %>
-																<!--削除ボタン-->
-															<% if current_user == post.user %>
-																		<%= link_to post, method: :delete, data: { confirm: "本当に削除しますか？" },
-																		class: 'btn btn-danger text-white btn-sm' do %> <i class="far fa-trash-alt"></i><% end %>
-															<% end %>
+															<p>
+															<ul class="like_comment">
+																	<li>
+																			<!-- いいね登録ボタン -->
+																			<div id="like_post<%= post.id %>">
+																			<%= render 'favorites/favorite_button', post: post %>
+																	</li>
+																	<li>
+																			<!--コメントボタン-->
+																			<i class="far fa-comments"></i><%= post.comments.count %>
+																	</li>
+															</ul>
 												</div>
 
 												<div class="card-footer">
 															<div class="post-time">
 																	<!--投稿時間  -->
 																	<%= time_ago_in_words(post.created_at) %>前
-																	<!-- いいね登録ボタン -->
-																	<div id="like_post<%= post.id %>">
-																	<%= render 'favorites/favorite_button', post: post %>
-																	</div>
 															</div>
 												<!-- 編集ボタン -->
 												<% if current_user == post.user %>
@@ -78,8 +56,7 @@
 															<%= link_to post, method: :delete, data: { confirm: "本当に削除しますか？" },
 															class: 'btn btn-danger text-white btn-sm' do %> <i class="far fa-trash-alt"></i><% end %>
 														  <% end %>
-															<!--コメントボタン-->
-															<p><i class="far fa-comments"></i><%= post.comments.count %></p>
+
 										    </div>
 							    </div>
 						</aside>
