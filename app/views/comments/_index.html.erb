@@ -1,48 +1,38 @@
 <div class="text-center">
-    <div class="card-footer">
-        <p><i class="far fa-comments"></i>コメント<%= @post.comments.count %>件</p>
+      <div class="card-footer">
+          <h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">コメント<%= @post.comments.count %>件　もっと見る....</h6>
 
-            <!--コメント-->
-
-            <% @post.comments.each do |comment| %>
+          <% @post.comments.first(2).each do |comment| %>
                 <!--ユーザー名と画像を表示-->
                 <div class="comment_user">
-                <% if comment.user.image? %>
-                <%= link_to image_tag("#{comment.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+                      <% if comment.user.image? %>
+                          <%= link_to image_tag("#{comment.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+                          <% else %>
+                          <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+                      <% end %>
+                      <%= comment.user.name %> 　
+                      <%= time_ago_in_words(comment.created_at) %>前
+                      <!--コメント一覧-->
+                      <h6><%= comment.comment %></h6>
                 </div>
-                <% else %>
-                <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+          <% end %>
+
+          <div class="collapse" id="collapseExample">
+                <% @post.comments.offset(2).each do |comment| %>
+                      <!--ユーザー名と画像を表示-->
+                      <div class="comment_user">
+                            <% if comment.user.image? %>
+                                  <%= link_to image_tag("#{comment.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+                                  <% else %>
+                                  <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+                            <% end %>
+                            <%= comment.user.name %> 　
+                            <%= time_ago_in_words(comment.created_at) %>前
+                            <!--コメント一覧-->
+                            <h6><%= comment.comment %></h6>
+                      </div>
                 <% end %>
-                <%= comment.user.name %> 　
-                <%= time_ago_in_words(comment.created_at) %>前
-                <!--コメント一覧-->
-                <h6><%= comment.comment %></h6>
+          </div>
 
-            <% end %>
-        </div>
-    </div>
-</div>
-
-<%= @post.comments.count %>
-
-<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    クリックしてコメントを全て表示
-</button>
-<div class="collapse" id="collapseExample">
-    <div class="border p-3">
-      <% @post.comments.each do |comment| %>
-      <!--ユーザー名と画像を表示-->
-      <div class="comment_user">
-        <% if comment.user.image? %>
-        <%= link_to image_tag("#{comment.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
-        <% else %>
-              <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
-        <% end %>
-        <%= comment.user.name %> 　
-      <%= time_ago_in_words(comment.created_at) %>前
-      <!--コメント一覧-->
-      <h6><%= comment.comment %></h6>
       </div>
-    <% end %>
-    </div>
 </div>

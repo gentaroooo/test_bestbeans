@@ -4,7 +4,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <% if logged_in? %>
@@ -15,7 +15,7 @@
                 <!--ユーザー一覧-->
                 <li class="nav-item"><%= link_to users_path, class: 'nav-link' do %><i class="fas fa-users"></i><% end %></li>
 
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown dropleft">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name.truncate(10) %></a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <!--プロフィール-->
@@ -42,4 +42,3 @@
 
 </div>
 </body>
-
