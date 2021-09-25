@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.order(id: :desc).page(params[:page]).per(8)
     counts(@user)
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
 
     @posts.each do |post|
     @comment= post.comments.build

@@ -5,34 +5,33 @@
           <% @post.comments.first(2).each do |comment| %>
                 <!--ユーザー名と画像を表示-->
                 <div class="comment_user">
-                      <% if comment.user.image? %>
-                          <%= link_to image_tag("#{comment.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
-                          <% else %>
-                          <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
-                      <% end %>
-                      <%= comment.user.name %> 　
-                      <%= time_ago_in_words(comment.created_at) %>前
-                      <!--コメント一覧-->
-                      <h6><%= comment.comment %></h6>
+                    <% if comment.user.image? %>
+                      <%= link_to image_tag("#{comment.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+                      <% else %>
+                      <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+                    <% end %>
+                    <%= comment.user.name %> 　
+                    <%= time_ago_in_words(comment.created_at) %>前
+                    <!--コメント一覧-->
+                    <h6><%= comment.comment %></h6>
                 </div>
           <% end %>
 
           <div class="collapse" id="collapseExample">
-                <% @post.comments.offset(2).each do |comment| %>
-                      <!--ユーザー名と画像を表示-->
-                      <div class="comment_user">
-                            <% if comment.user.image? %>
-                                  <%= link_to image_tag("#{comment.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
-                                  <% else %>
-                                  <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
-                            <% end %>
-                            <%= comment.user.name %> 　
-                            <%= time_ago_in_words(comment.created_at) %>前
-                            <!--コメント一覧-->
-                            <h6><%= comment.comment %></h6>
-                      </div>
-                <% end %>
+              <% @post.comments.offset(2).each do |comment| %>
+                    <!--ユーザー名と画像を表示-->
+                    <div class="comment_user">
+                          <% if comment.user.image? %>
+                            <%= link_to image_tag("#{comment.user.image}", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+                            <% else %>
+                            <%= link_to image_tag("/assets/human.png", class: "user-icon", size: "50x50", alt: "ユーザー画像"), user_path(comment.user) %>
+                          <% end %>
+                          <%= comment.user.name %> 　
+                          <%= time_ago_in_words(comment.created_at) %>前
+                          <!--コメント一覧-->
+                          <h6><%= comment.comment %></h6>
+                    </div>
+              <% end %>
           </div>
-
       </div>
 </div>

@@ -4,9 +4,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    # @users = @post.users.order(id: :desc).page(params[:page])
-    @comments = @post.comments.page(params[:page]).per(7).reverse_order  #この行を追記
-    # @comment = current_user.comments.new
+    @comments = @post.comments.page(params[:page]).per(7).reverse_order
     @comment = Comment.new
   end
 
